@@ -224,7 +224,7 @@ class Tools(commands.Cog):
             discord.CategoryChannel: "Category",
         }
 
-        load = "```\nLoading channel info...```"
+        load = "```\nLoading channel information...```"
         waiting = await ctx.send(load)
 
         with sps(Exception):
@@ -252,7 +252,7 @@ class Tools(commands.Cog):
     @commands.guild_only()
     @commands.command()
     async def eid(self, ctx, emoji: discord.Emoji):
-        """Get an id for an emoji."""
+        """Get an ID for an emoji."""
         await ctx.send(f"**ID for {emoji}:**   {emoji.id}")
 
     @commands.guild_only()
@@ -506,7 +506,7 @@ class Tools(commands.Cog):
     @commands.guild_only()
     @commands.command()
     async def rid(self, ctx, *, rolename):
-        """Shows the id of a role."""
+        """Shows the ID of a role."""
         await ctx.trigger_typing()
         if rolename is discord.Role:
             role = rolename
@@ -524,7 +524,7 @@ class Tools(commands.Cog):
     @commands.guild_only()
     @commands.command()
     async def rinfo(self, ctx, *, rolename):
-        """Shows role info."""
+        """Shows role information."""
         channel = ctx.channel
         guild = ctx.guild
         await ctx.trigger_typing()
@@ -554,7 +554,7 @@ class Tools(commands.Cog):
                 perms_we_have = "None"
             if perms_we_dont == "":
                 perms_we_dont = "None"
-            msg = discord.Embed(description="Gathering role stats...", colour=role.color)
+            msg = discord.Embed(description="Gathering role statistics...", colour=role.color)
             if role.color is None:
                 role.color = discord.Colour(value=0x000000)
             loadingmsg = await ctx.send(embed=msg)
@@ -567,7 +567,7 @@ class Tools(commands.Cog):
                 name="Users in Role", value=len([m for m in guild.members if role in m.roles])
             )
             em.add_field(name="ID", value=role.id)
-            em.add_field(name="Color", value=role.color)
+            em.add_field(name="Colour", value=role.color)
             em.add_field(name="Position", value=role.position)
             em.add_field(name="Valid Permissons", value="{}".format(perms_we_have))
             em.add_field(name="Invalid Permissons", value="{}".format(perms_we_dont))
@@ -590,7 +590,7 @@ class Tools(commands.Cog):
                     else:
                         perms_we_dont2 += "-{0}\n".format(str(x).split("'")[1])
             await ctx.send(
-                "{}Name: {}\nCreated: {}\nUsers in Role : {}\nId : {}\nColor : {}\nPosition : {}\nValid Perms : \n{}\nInvalid Perms : \n{}```".format(
+                "{}Name: {}\nCreated: {}\nUsers in Role : {}\nID : {}\nColour : {}\nPosition : {}\nValid Permissions : \n{}\nInvalid Permissions : \n{}```".format(
                     permss,
                     role.name,
                     self._dynamic_time(role.created_at),
@@ -630,7 +630,7 @@ class Tools(commands.Cog):
 
     @commands.command(hidden=True)
     async def sharedservers(self, ctx, user: discord.Member = None):
-        """Shows shared server info. Defaults to author."""
+        """Shows shared server information. Defaults to author."""
         author = ctx.author
         guild = ctx.guild
         if not user:
@@ -679,7 +679,7 @@ class Tools(commands.Cog):
             try:
                 guild = self.bot.get_guild(int(guild))
             except TypeError:
-                return await ctx.send("Not a valid guild id.")
+                return await ctx.send("Not a valid guild ID.")
         online = str(
             len(
                 [
@@ -693,7 +693,7 @@ class Tools(commands.Cog):
         text_channels = [x for x in guild.channels if isinstance(x, discord.TextChannel)]
         voice_channels = [x for x in guild.channels if isinstance(x, discord.VoiceChannel)]
 
-        load = "```\nLoading guild info...```"
+        load = "```\nLoading guild information...```"
         waiting = await ctx.send(load)
 
         data = "```ini\n"
@@ -738,7 +738,7 @@ class Tools(commands.Cog):
             )
         )
 
-        load = "```\nLoading user info...```"
+        load = "```\nLoading user information...```"
         waiting = await ctx.send(load)
 
         data = "```ini\n"

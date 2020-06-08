@@ -85,7 +85,7 @@ class WarcraftLogs(commands.Cog):
     @commands.command()
     @commands.guild_only()
     async def wclrank(self, ctx, username=None, realmname=None, region=None):
-        """Fetch ranking info about a player."""
+        """Fetch ranking information about a player."""
         userdata = await self.config.user(ctx.author).all()
         apikey = await self.config.apikey()
         if not apikey:
@@ -162,8 +162,8 @@ class WarcraftLogs(commands.Cog):
                 short_list = dict(itertools.islice(sorted_item.items(), 5))
                 zone_name, phase_num = self.clean_name(list(item))
                 for log_id, info_list in short_list.items():
-                    # info_list: [timestamp:int, percentile:int, spec:str, fightid:int, rank:int, outOf:int]
-                    # log_id: encounterid-encountername
+                     info_list: [timestamp:int, percentile:int, spec:str, fightid:int, rank:int, outOf:int]
+                     log_id: encounterid-encountername
                     log_url = log_id.split("-")[0]
                     log_name = log_id.split("-")[1]
                     log_page += f"{wcl_url.format(log_url, info_list[3])}\n{self.time_convert(info_list[0])} UTC\nEncounter: {log_name}\nDPS Percentile: {info_list[1]} [{info_list[4]} of {info_list[5]}] ({info_list[2]})\n\n"
@@ -184,7 +184,7 @@ class WarcraftLogs(commands.Cog):
     @commands.command()
     @commands.guild_only()
     async def wclgear(self, ctx, username=None, realmname=None, region=None):
-        """Fetch gear info about a player."""
+        """Fetch gear information about a player."""
         userdata = await self.config.user(ctx.author).all()
         apikey = await self.config.apikey()
         if not apikey:

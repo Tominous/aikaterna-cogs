@@ -513,7 +513,7 @@ class CardsAgainstHumanity(commands.Cog):
                 judge = game["Members"][game["Judge"]]
                 if not judge["IsBot"]:
                     continue
-                # task = self.bot.loop.create_task(self.botPickWin(ctx, game))
+                 task = self.bot.loop.create_task(self.botPickWin(ctx, game))
                 task = asyncio.ensure_future(self.botPickWin(ctx, game))
                 judge["Task"] = task
 
@@ -552,7 +552,7 @@ class CardsAgainstHumanity(commands.Cog):
             await self.sendToUser(member["User"], msg)
             await asyncio.sleep(0.1)
 
-            # await self.nextPlay(ctx, game)
+             await self.nextPlay(ctx, game)
 
         # Start the game loop
         event = game["NextHand"]
@@ -874,10 +874,10 @@ class CardsAgainstHumanity(commands.Cog):
             if member["ID"] == game["Members"][game["Judge"]]["ID"]:
                 continue
             # Not a human player, and not the judge
-            # task = self.bot.loop.create_task(self.botPick(ctx, member, game))\
+             task = self.bot.loop.create_task(self.botPick(ctx, member, game))\
             task = asyncio.ensure_future(self.botPick(ctx, member, game))
             member["Task"] = task
-            # await self.botPick(ctx, member, game)
+             await self.botPick(ctx, member, game)
 
     @commands.command()
     async def game(self, ctx, *, message=None):
@@ -1162,7 +1162,7 @@ class CardsAgainstHumanity(commands.Cog):
             await ctx.send(msg)
             return
         if self.checkGame(removeCheck):
-            # await self.nextPlay(ctx, removeCheck)
+             await self.nextPlay(ctx, removeCheck)
 
             """# Start the game loop
             event = removeCheck['NextHand']
@@ -1509,7 +1509,7 @@ class CardsAgainstHumanity(commands.Cog):
                     ctx.author,
                     f"I couldn't locate that bot on this game.  If you're trying to remove a player, try the `{prefix[0]}removeplayer [name]` command.",
                 )
-        # await self.nextPlay(ctx, userGame)
+         await self.nextPlay(ctx, userGame)
 
         """# Start the game loop
         event = userGame['NextHand']
@@ -1691,7 +1691,7 @@ class CardsAgainstHumanity(commands.Cog):
             if toRemove:
                 await self.removeMember(member["ID"])
                 break
-        # await self.nextPlay(ctx, userGame)
+         await self.nextPlay(ctx, userGame)
 
         if toRemove:
             """# Start the game loop
